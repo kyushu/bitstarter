@@ -2,9 +2,14 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
+// get file system
 var fs = require('fs');
+// fs.readFileSync(filename, option)
+// with    option fs.readFileSync return a string
+// without option fs.readFileSync return a buffer
+// get index.html as a buffer not a string
 var index = fs.readFileSync('index.html');
-//var buffer = new buffer(index);
+
 app.get('/', function(request, response) {
   response.send(index.toString());
 });
